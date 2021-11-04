@@ -1,88 +1,48 @@
-
-{{--{{$product->p_id}}--}}
-{{-- <br>--}}
-{{--{{$product->p_name}} <br>--}}
-{{--{{$product->p_type}} <br>--}}
-{{--{{$product->p_des}} <br>--}}
-{{--{{$product->p_price}} <br>--}}
-{{--{{$product->p_status}} <br> <br> <br>--}}
-
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-
-<form action="{{route('updateProduct')}}" method="POST">
-    @csrf
-    <table>
-{{--        <tr>--}}
-{{--            <td>Product name:</td>--}}
-{{--            <td><input type="text" name="p_name" value="{{$product->p_name}}"></td>--}}
-{{--        </tr>--}}
+@extends('layout.insideApp')
+<link rel="stylesheet" href="{{asset('css/viewSingleProduct.css')}}">
+@section('content')
 
 
-{{--        <tr>--}}
-{{--            <td>Product id:</td>--}}
-{{--            <td><input type="text" name="p_id" value="{{$product->p_id}}"></td>--}}
-{{--            <br>--}}
-{{--        </tr>--}}
+    <form action="{{route('updateProduct')}}" method="POST">
+        @csrf
 
-        <tr>
-            <td>Product Name:</td>
-            <td><input type="text" name="p_name" value="{{$product->p_name}}"></td>
-            <br>
-        </tr>
+        <div class="products-details">
+            <p>Product id:</p>
+            <p class="form-control">{{$product->p_id}}</p>
+            <input class="form-control" type="hidden" name="p_id" value="{{$product->p_id}}">
 
-        <tr>
-            <td>Product type:</td>
-            <td><input type="text" name="p_type" value="{{$product->p_type}}"></td>
-        </tr>
 
-        <tr>
-            <td>Product description:</td>
-            <td><input type="text" name="p_des" value="{{$product->p_des}}"></td>
-        </tr>
+            <p>Product name:</p>
+            <input class="form-control" type="text" name="p_name" value="{{$product->p_name}}">
 
-        <tr>
-            <td>Product price:</td>
-            <td><input type="text" name="p_price" value="{{$product->p_price}}"></td>
-            <br>
-        </tr>
 
-{{--        <tr>--}}
+            <p>Product type:</p>
+            <input class="form-control" type="text" name="p_type" value="{{$product->p_type}}">
 
-{{--            <select name="p_status" class="form-select" >--}}
-{{--                <option selected value="available">Available</option>--}}
-{{--                <option value="stockOut">Stock out</option>--}}
-{{--                <option value="comingSoon">Coming Soon</option>--}}
-{{--            </select>--}}
 
-{{--        </tr>--}}
+            <p>Product description:</p>
+            <textarea class="form-control" type="text" name="p_des" rows="4" cols="50">{{$product->p_des}}</textarea>
+
+
+            <p>Product price:</p>
+            <input class="form-control" type="text" name="p_price" value="{{$product->p_price}}">
+
+
+            @if ($errors->any())
+                <div class="alert alert-danger my-3">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <input class="btn btn-primary my-2 mt-4" type="submit" value="Update Product Data">
+
+            <a class="btn btn-danger my-2" href="/delete_single_product/{{$product->p_id}}">Delete Product Data</a>
+        </div>
+    </form>
 
 
 
-
-
-
-        <tr>
-            <td><input type="submit" value="Submit">
-        </tr>
-
-    </table>
-</form>
-
-
-
-<a href="/delete_single_product/{{$product->p_id}}">Delete</a>
-
-{{--Product ID:   {{$product->p_id}} <br>--}}
-{{--Product name: {{$product->p_name}} <br>--}}
-{{--Product type: {{$product->p_type}} <br>--}}
-{{--Product description:  {{$product->p_des}} <br>--}}
-{{--Product price: {{$product->p_price}} <br>--}}
-{{--Product status :{{$product->p_status}} <br> <br> <br>--}}
+@endsection()

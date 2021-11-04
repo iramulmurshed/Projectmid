@@ -1,71 +1,47 @@
 @extends('layout.outsideApp')
 @section('content')
+
+    <link rel="stylesheet" href="{{asset('css/signup.css')}}">
+
+    <form  action="{{route('signup')}}" method="POST">
+    @csrf
+    <div class="form-signup">
+    <p>Name:</p>
+    <input class="form-control" type="text" name="s_name">
+
+    <p>Email:</p>
+    <input class="form-control" type="text" name="s_email">
+
+    <p>Password:</p>
+    <input class="form-control" type="password" name="s_password">
+
+    <p>Mobile No:</p>
+    <input class="form-control" type="text" name="s_phone">
+
+    <p>Select Gender:</p>
+    <select class="form-select" name="s_gender" id="s_id">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="others">Others</option>
+    </select>
+
+    <p>Date of Birth</p>
+    <input class="form-control" type="date" id="birthday" name="s_dob">
+
     @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
+    <div class="alert alert-danger mt-3">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
     @endif
 
-    <form action="{{route('signup')}}" method="POST">
-        @csrf
-        <table>
-            <tr>
-                <td>Name:</td>
-                <td><input type="text" name="s_name"></td>
-            </tr>
+    <input class="btn btn-success" type="submit" value="Sign Up">
+    </div>
 
-
-            <tr>
-                <td>Email:</td>
-                <td><input type="text" name="s_email"></td>
-            </tr>
-
-
-            <td>Password:</td>
-            <td><input type="password" name="s_password"></td>
-            </tr>
-
-
-            <tr>
-                <td>Mobile No:</td>
-                <td><input type="text" name="s_phone"></td>
-                <br>
-            </tr>
-
-        </table>
-
-        <tr>
-
-
-            <select name="s_gender" id="s_id">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="others">Others</option>
-            </select>
-
-        </tr>
-
-        <table>
-
-
-            <br>
-            <td>Date of Birth</td>
-            <td><input type="date" id="birthday" name="s_dob">
-            </td>
-
-            <br>
-
-            <tr>
-                <td><input type="submit" value="Submit"> <input type="reset" value="Reset">
-            </tr>
-
-
-        </table>
-    </form>
+</form>
 
 
 

@@ -1,8 +1,13 @@
-<h1> Welcome Seller! </h1>
+@extends('layout.insideApp')
+
+<link rel="stylesheet" href="{{asset('css/home.css')}}">
+@section('content')
+    <div class="home-container">
+        <a href="{{route('add_product')}}"> Add product </a>
+        <a href="{{route('show_product')}}"> Show product </a>
+        <a href="{{route('profile')}}">Profile</a>
+    </div>
 
 
-<a href="{{route('logout')}}"> logout</a>
-<a href="{{route('add_product')}}"> add product </a>
+@endsection
 
-<a href="{{route('show_product')}}"> show product </a>
-<a href="{{route('profile')}}">profile</a>

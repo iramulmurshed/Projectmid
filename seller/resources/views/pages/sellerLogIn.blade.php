@@ -1,38 +1,30 @@
 @extends('layout.outsideApp')
+<link rel="stylesheet" href="{{asset('css/login.css')}}">
 @section('content')
 
+
+<form class="form-login" action="{{route('login')}}" method="post">
+    @csrf
+
+    <p>Email:</p>
+    <input class="form-control" type="text" name="s_email">
+
+    <p>Password:</p>
+    <input class="form-control mb-2" type="password" name="s_password">
+
     @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
+    <div class="alert alert-danger mt-3">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
     @endif
 
-<form action="{{route('login')}}" method="post">
-    @csrf
-    <table>
+    <input class="btn btn-success mt-3" type="submit" value="Login">
 
-
-        <tr>
-            <td>Email:</td>
-            <td><input type="text" name="s_email"></td>
-        </tr>
-
-
-        <td>Password:</td>
-        <td><input type="password" name="s_password"></td>
-        </tr>
-
-
-        <tr>
-            <td><input type="submit" value="Login">
-        </tr>
-        </table>
-
-        </form>
+</form>
 
 
 @endsection
