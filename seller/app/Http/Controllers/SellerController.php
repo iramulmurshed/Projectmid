@@ -75,7 +75,7 @@ class SellerController extends Controller
                 's_password' => 'required|min:6',
                 's_phone' => 'required|numeric',
                 's_dob' => 'required',
-                's_gender' => 'required',
+
 
             ],
          [
@@ -93,7 +93,7 @@ class SellerController extends Controller
 
              's_dob.required' => 'Date of Birth is required',
 
-             's_gender.required' => 'gender field is required',
+
 
 
          ]
@@ -104,7 +104,7 @@ class SellerController extends Controller
         $Seller->s_password = $request->s_password;
         $Seller->s_phone = $request->s_phone;
         $Seller->s_dob = $request->s_dob;
-        $Seller->s_gender = $request->s_gender;
+
 
 
         $Seller->save();
@@ -122,7 +122,7 @@ class SellerController extends Controller
                 'p_type' => 'required|min:3|max:25',
                 'p_des' => 'required|min:10|max:250',
                 'p_price' => 'required|numeric',
-                'p_status' => 'required',
+//                'p_status' => 'required',
 
             ]
 
@@ -135,7 +135,7 @@ class SellerController extends Controller
         $Product->p_type = $request->p_type;
         $Product->p_des = $request->p_des;
         $Product->p_price = $request->p_price;
-        $Product->p_status = "available";
+//        $Product->p_status = "available";
         $Product->s_id=$request->session()->get('seller')['s_id'];
         $Product->save();
         return redirect()->route('show_single_product');
@@ -229,7 +229,7 @@ class SellerController extends Controller
         $Seller->s_dob = $request->s_dob;
         $Seller->s_gender = $request->s_gender;
         $Seller->s_status = "valid";
-        dd($Seller);
+
         $Seller->save();
         return redirect()->route('login');
 

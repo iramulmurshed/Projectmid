@@ -26,9 +26,15 @@
 {{--        </tr>--}}
 
 
+{{--        <tr>--}}
+{{--            <td>Product id:</td>--}}
+{{--            <td><input type="text" name="p_id" value="{{$product->p_id}}"></td>--}}
+{{--            <br>--}}
+{{--        </tr>--}}
+
         <tr>
-            <td>Product id:</td>
-            <td><input type="text" name="p_id" value="{{$product->p_id}}"></td>
+            <td>Product Name:</td>
+            <td><input type="text" name="p_name" value="{{$product->p_name}}"></td>
             <br>
         </tr>
 
